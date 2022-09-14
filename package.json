@@ -1,0 +1,27 @@
+{
+  "name": "horarios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanCG99/horarioTEDS-BE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanCG99/horarioTEDS-BE/issues"
+  },
+  "homepage": "https://github.com/RomanCG99/horarioTEDS-BE#readme",
+  "dependencies": {
+    "apollo-server": "^3.10.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
