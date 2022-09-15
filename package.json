@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/RomanCG99/horarioTEDS-BE#readme",
   "dependencies": {
-    "apollo-server": "^3.10.2"
+    "apollo-server": "^3.10.2",
+    "dotenv": "^16.0.2",
+    "moongose": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
