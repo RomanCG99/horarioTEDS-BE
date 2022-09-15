@@ -1,26 +1,37 @@
-const coso = [
-    {
-        titulo: 'JavaScript Moderno Guía Definitiva Construye +10 Proyectos',
-        tecnologia: 'JavaScript ES6',
-    },
-    {
-        titulo: 'React – La Guía Completa: Hooks Context Redux MERN +15 Apps',
-        tecnologia: 'React',
-    },
-    {
-        titulo: 'Node.js – Bootcamp Desarrollo Web inc. MVC y REST API’s',
-        tecnologia: 'Node.js'
-    },
-    {
-        titulo: 'ReactJS Avanzado – FullStack React GraphQL y Apollo',
-        tecnologia: 'React'
-    }
-];
+require('dotenv').config({ path: 'variables.env' });
+
 
 // resolvers 
 const resolvers = {
     Query: {
-        obteneralgo: () => coso[0]
+        obtenerViaje: async (_, { id }) => {
+
+            // revisar si el viaje existe o no
+            const viaje = await Viaje.findById(id);
+            return viaje;
+            }
+        },
+    Mutation: {
+        nuevoViaje: async (_, { input }) => {
+            try {
+                const viaje = new Viaje(input);
+                // almacenar en la base de datos 
+                const resultado = await viaje.save();
+                return resultado;
+            } catch (error) {
+                console.log(error);
+
+            }
+        },
+        actualizarViaje: async (_, { id, input }) => {
+            // revisar si el producto existe o no
+            let viaje = await Viaje.findById(id);
+
+            //guardarlo en la base de datos
+            viaje = await Viaje.findOneAndUpdate({ _id: id }, input, { new: true });
+
+            return viaje;
+        }
     }
 }
 

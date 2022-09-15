@@ -21,7 +21,10 @@
   "dependencies": {
     "apollo-server": "^3.10.2",
     "dotenv": "^16.0.2",
-    "moongose": "^1.0.0"
+    "formik": "^2.2.9",
+    "mongoose": "^6.6.1",
+    "moongose": "^1.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
