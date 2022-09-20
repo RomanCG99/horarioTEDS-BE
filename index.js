@@ -4,6 +4,9 @@ const resolvers = require ('./db/resolvers');
 
 const conectarDB = require('./config/db');
 
+// conectar a la base de datos
+conectarDB();
+
 // servidor 
 const server = new ApolloServer({
     typeDefs,
