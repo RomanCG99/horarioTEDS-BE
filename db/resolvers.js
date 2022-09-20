@@ -1,5 +1,5 @@
 require('dotenv').config({ path: 'variables.env' });
-
+const Usuario = require('../models/Usuario')
 
 // resolvers 
 const resolvers = {
@@ -7,16 +7,16 @@ const resolvers = {
         obtenerViaje: async (_, { id }) => {
 
             // revisar si el viaje existe o no
-            const viaje = await Viaje.findById(id);
-            return viaje;
+            const Viaje = await Usuario.findById(id);
+            return Viaje;
             }
         },
     Mutation: {
-        nuevoViaje: async (_, { input }) => {
+        nuevoUnidad: async (_, { input }) => {
             try {
-                const viaje = new Viaje(input);
+                const Viaje = new Usuario(input);
                 // almacenar en la base de datos 
-                const resultado = await viaje.save();
+                const resultado = await Viaje.save();
                 return resultado;
             } catch (error) {
                 console.log(error);
@@ -25,12 +25,12 @@ const resolvers = {
         },
         actualizarViaje: async (_, { id, input }) => {
             // revisar si el producto existe o no
-            let viaje = await Viaje.findById(id);
+            let Viaje = await Usuario.findById(id);
 
             //guardarlo en la base de datos
-            viaje = await Viaje.findOneAndUpdate({ _id: id }, input, { new: true });
+            Viaje = await Usuario.findOneAndUpdate({ _id: id }, input, { new: true });
 
-            return viaje;
+            return Viaje;
         }
     }
 }
