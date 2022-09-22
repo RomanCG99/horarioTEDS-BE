@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const UsuariosSchema = mongoose.Schema({
 
-    Unidad: {
+    unidad: {
         type: String,
+        required:true,
         trim: true
     },
     lunes: {

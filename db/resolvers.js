@@ -4,13 +4,17 @@ const Usuario = require('../models/Usuario')
 // resolvers 
 const resolvers = {
     Query: {
-        obtenerViaje: async (_, { id }) => {
+        obtenerViaje: async () => {
 
-            // revisar si el viaje existe o no
-            const Viaje = await Usuario.findById(id);
-            return Viaje;
+            try {
+                const Viaje = await Usuario.find({});
+                return Viaje;
+            } catch (error) {
+                console.log(error);
             }
-        },
+
+        }
+    },
     Mutation: {
         nuevoUnidad: async (_, { input }) => {
             try {
