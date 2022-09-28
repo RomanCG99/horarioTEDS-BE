@@ -4,8 +4,14 @@ const UsuariosSchema = mongoose.Schema({
 
     unidad: {
         type: String,
-        required:true,
+        required: true,
         trim: true
+
+    },
+    servicio: {
+        type: Boolean,
+        required: true,
+        default: false
     },
     lunes: {
         cliente: {

@@ -9,6 +9,7 @@ const typeDefs = gql`
     input ViajeInput {
         cliente: String
         destino: String 
+        
     }
     type Unidad {
         id: ID
@@ -20,9 +21,11 @@ const typeDefs = gql`
         viernes: viaje
         sabado: viaje 
         domingo: viaje 
+        servicio: Boolean
     }
     input UnidadInput {
 unidad: String 
+servicio: Boolean
 lunes: ViajeInput
 martes: ViajeInput
 miercoles: ViajeInput
@@ -31,13 +34,17 @@ viernes: ViajeInput
 sabado: ViajeInput
 domingo: ViajeInput
     }
+    input ClaveInput {
+        clave: String
+    }
 
     type Query {
-    obtenerViaje(id: ID) : [Unidad]
+    obtenerViaje: [Unidad]
     }
     type Mutation {
         nuevoUnidad(input: UnidadInput) : Unidad
         actualizarViaje( id: ID!, input : UnidadInput ) : Unidad
+        obtenerClave(input: ClaveInput ) : String 
     }
     `;
 

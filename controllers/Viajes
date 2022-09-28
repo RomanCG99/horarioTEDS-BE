@@ -1,0 +1,47 @@
+require('dotenv').config({ path: 'variables.env' });
+const Usuario = require('../models/Usuario')
+
+exports.obtenerViaje = async () => {
+    try {
+        const Viaje = await Usuario.find({});
+        return Viaje;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.nuevoUnidad = async (input ) => {
+    try {
+        const Viaje = new Usuario(input);
+        // almacenar en la base de datos 
+        const resultado = await Viaje.save();
+        return resultado;
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+
+exports.actualizarViaje = async (id, input) => {
+    // revisar si el producto existe o no
+    let Viaje = await Usuario.findById(id);
+    //guardarlo en la base de datos
+    Viaje = await Usuario.findOneAndUpdate({ _id: id }, input, { new: true });
+    return Viaje;
+}
+ 
+exports.obtenerClave = async (input) => {
+
+    const { clave } = input
+
+    try {
+        if (clave == process.env.Access_Key) {
+            return process.env.Access_Key
+        } else {
+            throw new Error('clave incorrecta, intentelo de nuevo')
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
