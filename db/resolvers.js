@@ -1,37 +1,25 @@
-require('dotenv').config({ path: 'variables.env' });
-
+//CONTROLLERS 
+const{
+    obtenerUnidades,
+    nuevoUnidad,
+    actualizarUnidad,
+    obtenerClave
+} = require('../controllers/horario');
 
 // resolvers 
 const resolvers = {
+    //QUERIES
     Query: {
-        obtenerViaje: async (_, { id }) => {
+       //UNIDAD
+       obtenerUnidades : () => obtenerUnidades(),
+    },
+    //MUTATIONS
+    Mutation:{
+       //UNIDAD
+       nuevoUnidad : (_, {input}) => nuevoUnidad(input),
+       actualizarUnidad : (_, {id, input}) => actualizarUnidad(id, input),
 
-            // revisar si el viaje existe o no
-            const viaje = await Viaje.findById(id);
-            return viaje;
-            }
-        },
-    Mutation: {
-        nuevoViaje: async (_, { input }) => {
-            try {
-                const viaje = new Viaje(input);
-                // almacenar en la base de datos 
-                const resultado = await viaje.save();
-                return resultado;
-            } catch (error) {
-                console.log(error);
-
-            }
-        },
-        actualizarViaje: async (_, { id, input }) => {
-            // revisar si el producto existe o no
-            let viaje = await Viaje.findById(id);
-
-            //guardarlo en la base de datos
-            viaje = await Viaje.findOneAndUpdate({ _id: id }, input, { new: true });
-
-            return viaje;
-        }
+       obtenerClave : (_,{input}) => obtenerClave(input)
     }
 }
 

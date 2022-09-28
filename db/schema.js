@@ -1,41 +1,57 @@
 const { gql } = require('apollo-server');
 
+
 // schema
 const typeDefs = gql`
-    type Viaje {
+    type Viaje{
+        nombre: String
+        destino: String
+    }
+
+    type Unidad{
         id: ID
         unidad: String
         lunes: Viaje
         martes: Viaje
+        miercoles: Viaje
         jueves: Viaje
         viernes: Viaje
         sabado: Viaje
-        domingo: Viaje  
+        domingo: Viaje
+        servicio: Boolean
     }
-    input ViajeInput {
-        cliente: String
-        destino: String 
-    }
-    type Unidad {
+
+    input UnidadInput{
         unidad: String
-        lunes: Unidad
-        martes: Unidad
-        jueves: Unidad
-        viernes: Unidad
-        sabado: Unidad
+        lunes: ViajeInput
+        martes: ViajeInput
+        miercoles: ViajeInput
+        jueves: ViajeInput
+        viernes: ViajeInput
+        sabado: ViajeInput
+        domingo: ViajeInput
+        servicio: Boolean
     }
-    input UnidadInput {
-        cliente: String
-        destino: String 
+    
+    input ViajeInput{
+        nombre: String
+        destino: String
+    }
+
+    input ClaveInput{
+        clave: String
     }
 
     type Query {
-    obtenerViaje(id: ID) : Unidad
+       obtenerUnidades: [Unidad]
     }
-    type Mutation {
-        nuevoViaje(input: UnidadInput) : Unidad
-        actualizarViaje( id: ID!, input : UnidadInput ) : Unidad
-    }
-    `;
 
-module.exports = typeDefs;
+    type Mutation{
+        nuevoUnidad(input:UnidadInput): Unidad
+        actualizarUnidad(id: ID!, input:UnidadInput): Unidad
+
+        obtenerClave(input: ClaveInput): String
+    }
+`;
+
+    module.exports = typeDefs;
