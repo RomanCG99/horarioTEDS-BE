@@ -1,25 +1,27 @@
+const Viajes = require('../models/Viajes')
+
 //CONTROLLERS 
-const{
+const {
     obtenerUnidades,
     nuevoUnidad,
-    actualizarUnidad,
-    obtenerClave
+    obtenerClave,
+    actualizarUnidad
 } = require('../controllers/horario');
 
 // resolvers 
 const resolvers = {
     //QUERIES
     Query: {
-       //UNIDAD
-       obtenerUnidades : () => obtenerUnidades(),
+        //UNIDAD
+        obtenerUnidades: () => obtenerUnidades(),
     },
     //MUTATIONS
-    Mutation:{
-       //UNIDAD
-       nuevoUnidad : (_, {input}) => nuevoUnidad(input),
-       actualizarUnidad : (_, {id, input}) => actualizarUnidad(id, input),
-
-       obtenerClave : (_,{input}) => obtenerClave(input)
+    Mutation: {
+        //UNIDAD
+        nuevoUnidad: (_, { input }) => nuevoUnidad(input),
+        actualizarUnidad:(_, {id, input}) => actualizarUnidad(id, input),
+        obtenerClave: (_, { input }) => obtenerClave(input)
+        
     }
 }
 

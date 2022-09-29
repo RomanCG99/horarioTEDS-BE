@@ -102,12 +102,8 @@ const ViajesSchema = mongoose.Schema({
         type:Boolean,
         required: true
     },
-    password:{
-        type: String,
-        required:true,
-        trim:true
-    }
+
     
 });
 
-module.exports = mongoose.model('Viaje', ViajesSchema);
+module.exports = mongoose.model('Viajes', ViajesSchema);

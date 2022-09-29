@@ -1,5 +1,6 @@
 require('dotenv').config({ path: 'variables.env' })
-const Viajes = require('../models/Viajes')
+const Viajes = require('../models/Viajes');
+
 
 ///////////////// CREATE /////////////////
 exports.nuevoUnidad = async (input) => {
@@ -41,18 +42,15 @@ exports.obtenerClave = async (input) =>{
 }
 
 
+exports.actualizarUnidad = async (id, input) => {
+    // revisar si el producto existe o no
+    let Viaje = await Viajes.findById(id);
 
-///////////////// UPDATE /////////////////
-exports.actualizarUnidad = async (_, { id, input }) => {
-    //Revisar si la unidad tiene viaje existe
-    let viaje = await Viajes.findById(id);
-
-    if (!viaje) {
-        throw new Error('Viaje not found');
+    if(!Viaje){
+        throw new Error('Cliente not found');
     }
 
-    //Guardarlo en la BD
-    viaje = await Viajes.findByIdAndUpdate({ _id: id }, input, { new: true });
-    return viaje;
+    //guardarlo en la base de datos
+    Viaje = await Viajes.findOneAndUpdate({ _id: id }, input, { new: true });
+    return Viaje;
 }
-

@@ -48,6 +48,7 @@ const typeDefs = gql`
 
     type Mutation{
         nuevoUnidad(input:UnidadInput): Unidad
+        
         actualizarUnidad(id: ID!, input:UnidadInput): Unidad
 
         obtenerClave(input: ClaveInput): String
