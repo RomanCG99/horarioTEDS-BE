@@ -21,8 +21,9 @@
     "apollo-server": "^3.10.2",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.0.3",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.1",
     "moongose": "^1.0.0"
   },
   "devDependencies": {
